@@ -1,6 +1,7 @@
 package com.pwr.janek.bitbayapi;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,8 @@ import com.pwr.janek.bitbayapi.Model.OrderBook;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,8 +30,11 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     BitbayOrderBookApi bitbayOrderBookApi;
 
-
+    @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Inject
     BitbayOrderBookAdapter adapter;
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         MainActivityComponent mainActivityComponent = DaggerMainActivityComponent
                 .builder()
                 .mainActivityModule(new MainActivityModule(this))
@@ -45,9 +52,16 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         mainActivityComponent.injectMainActivity(this);
 
-        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fillView();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fillView();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     private void fillView() {
