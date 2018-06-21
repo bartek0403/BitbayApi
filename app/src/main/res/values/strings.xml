@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">BitbayApi</string>
     <string name="price">Cena</string>
-    <string name="quantity">Volumen</string>
+    <string name="depth">Głębokość</string>
 </resources>

@@ -1,7 +1,11 @@
 package com.pwr.janek.bitbayapi.MainActivityFeatures;
 
-import dagger.Provides;
+import com.pwr.janek.bitbayapi.Adapter.BitbayOrderBookAdapter;
+import com.pwr.janek.bitbayapi.MainActivity;
 
+import dagger.Module;
+import dagger.Provides;
+@Module
 public class MainActivityModule {
 
    private final MainActivity mainActivity;

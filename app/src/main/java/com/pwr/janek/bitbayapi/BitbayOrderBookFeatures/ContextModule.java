@@ -1,9 +1,13 @@
-package com.pwr.janek.bitbayapi;
+package com.pwr.janek.bitbayapi.BitbayOrderBookFeatures;
 
 import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
+
+/*
+ * Moduł dostarczający CONTEXT APLIKACJI
+ */
 
 @Module
 public class ContextModule {

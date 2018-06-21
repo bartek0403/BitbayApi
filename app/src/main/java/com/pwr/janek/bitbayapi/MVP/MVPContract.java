@@ -1,4 +1,4 @@
-package com.pwr.janek.bitbayapi;
+package com.pwr.janek.bitbayapi.MVP;
 
 public class MVPContract {
 

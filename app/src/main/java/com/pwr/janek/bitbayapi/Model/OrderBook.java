@@ -1,5 +1,5 @@
 
-package com.pwr.janek.bitbayapi;
+package com.pwr.janek.bitbayapi.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -10,16 +10,16 @@ public class OrderBook {
 
     @SerializedName("bids")
     @Expose
-    private List<List<Integer>> bids = null;
+    private List<List<Double>> bids;
     @SerializedName("asks")
     @Expose
-    private List<List<Double>> asks = null;
+    private List<List<Double>> asks ;
 
-    public List<List<Integer>> getBids() {
+    public List<List<Double>> getBids() {
         return bids;
     }
 
-    public void setBids(List<List<Integer>> bids) {
+    public void setBids(List<List<Double>> bids) {
         this.bids = bids;
     }
 

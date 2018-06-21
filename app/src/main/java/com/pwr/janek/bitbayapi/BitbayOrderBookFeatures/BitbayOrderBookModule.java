@@ -1,7 +1,8 @@
-package com.pwr.janek.bitbayapi;
+package com.pwr.janek.bitbayapi.BitbayOrderBookFeatures;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.pwr.janek.bitbayapi.ApiInterface.BitbayOrderBookApi;
 
 import dagger.Module;
 import dagger.Provides;
@@ -9,6 +10,11 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
+/*
+ * Moduł dostarczający elementy potrzebne do API - GSON,GSONFACTORY,OKHTTP,RETROFIT
+ * Moduł dla BitbayOrderBookComponent
+ */
 @Module(includes = ContextModule.class)
 public class BitbayOrderBookModule {
 
@@ -41,7 +47,7 @@ public class BitbayOrderBookModule {
     public Retrofit getRetrofit(OkHttpClient okHttpClient, GsonConverterFactory gsonConverterFactory){
         return new Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("https://bitbay.net/API/Public")
+                .baseUrl("https://bitbay.net/")
                 .addConverterFactory(gsonConverterFactory)
                 .build();
     }
