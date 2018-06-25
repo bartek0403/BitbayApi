@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Moduł dostarczający elementy potrzebne do API - GSON,GSONFACTORY,OKHTTP,RETROFIT
  * Moduł dla BitbayOrderBookComponent
  */
-@Module(includes = ContextModule.class)
+@Module
 public class BitbayOrderBookModule {
 
     @Provides

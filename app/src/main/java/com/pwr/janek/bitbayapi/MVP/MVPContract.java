@@ -1,19 +1,24 @@
 package com.pwr.janek.bitbayapi.MVP;
 
+import com.pwr.janek.bitbayapi.Model.OrderBook;
+
 public class MVPContract {
 
-    interface View{
-        public void showData();
+    public interface View{
+        void displayOrderBook(OrderBook orderBook);
+    }
+
+    public interface Presenter{
+        void setView(MVPContract.View view);
+        void refresh();
+        void refreshCompleted(OrderBook orderBook);
 
     }
 
-    interface Presenter{
-        public void fetchData();
+    public interface Model{
 
-    }
-
-    interface Model{
-
+        void fetchData();
+        void setPresenter(MVPContract.Presenter presenter);
     }
 
 

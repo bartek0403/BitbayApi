@@ -8,8 +8,8 @@ import retrofit2.http.GET;
 /*
     Interfejs dla Retrofit
  */
-
-public interface BitbayOrderBookApi {
+public  interface BitbayOrderBookApi {
     @GET("/API/Public/BTCPLN/orderbook.json")
     Call<OrderBook> getBitbayOrderBook();
 }
+

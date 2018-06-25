@@ -7,8 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.pwr.janek.bitbayapi.Adapter.BitbayOrderBookAdapter;
-import com.pwr.janek.bitbayapi.ApiInterface.BitbayOrderBookApi;
 import com.pwr.janek.bitbayapi.ApplicationFeatures.BitbayOrderBookApp;
+import com.pwr.janek.bitbayapi.MVP.MVPContract;
+import com.pwr.janek.bitbayapi.MVP.Presenter;
+
 import com.pwr.janek.bitbayapi.MainActivityFeatures.DaggerMainActivityComponent;
 import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityComponent;
 import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityModule;
@@ -18,17 +20,15 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /*
  * Klasa odpowiedzialna za przechowywanie zależności poziomu AKTYWNOŚCI - API i ADAPTER
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MVPContract.View {
+
 
     @Inject
-    BitbayOrderBookApi bitbayOrderBookApi;
+    Presenter presenter;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     BitbayOrderBookAdapter adapter;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.setView(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,30 +58,22 @@ public class MainActivity extends AppCompatActivity {
         mainActivityComponent.injectMainActivity(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        fillView();
+        presenter.setView(this);
+        presenter.refresh();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                fillView();
-                swipeRefreshLayout.setRefreshing(false);
+                presenter.refresh();
+
             }
         });
     }
 
-    private void fillView() {
-        Call<OrderBook> orderBookCall = bitbayOrderBookApi.getBitbayOrderBook();
-        orderBookCall.enqueue(new Callback<OrderBook>() {
-            @Override
-            public void onResponse(Call<OrderBook> call, Response<OrderBook> response) {
-                    adapter.setItems(response);
-                    recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onFailure(Call<OrderBook> call, Throwable t) {
-
-            }
-        });
+    @Override
+    public void displayOrderBook(OrderBook orderBook) {
+        adapter.setItems(orderBook);
+        recyclerView.setAdapter(adapter);
+        swipeRefreshLayout.setRefreshing(false);
     }
 }

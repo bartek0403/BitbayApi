@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 
 import com.pwr.janek.bitbayapi.BitbayOrderBookFeatures.BitbayOrderBookComponent;
+import com.pwr.janek.bitbayapi.BitbayOrderBookFeatures.BitbayOrderBookModule;
 import com.pwr.janek.bitbayapi.BitbayOrderBookFeatures.DaggerBitbayOrderBookComponent;
-import com.pwr.janek.bitbayapi.BitbayOrderBookFeatures.ContextModule;
 
 
 /*
@@ -14,25 +14,28 @@ import com.pwr.janek.bitbayapi.BitbayOrderBookFeatures.ContextModule;
  */
 public class BitbayOrderBookApp extends Application {
 
+    private BitbayOrderBookComponent bitbayOrderBookAppComponent;
+
     public BitbayOrderBookComponent getBitbayOrderBookAppComponent() {
         return bitbayOrderBookAppComponent;
     }
 
-    private BitbayOrderBookComponent bitbayOrderBookAppComponent;
+
 
     public static BitbayOrderBookApp get(Activity activity) {
         return (BitbayOrderBookApp) activity.getApplication();
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
+        @Override
+        public void onCreate () {
+            super.onCreate();
 
-      bitbayOrderBookAppComponent = DaggerBitbayOrderBookComponent
-                .builder()
-                .contextModule(new ContextModule(this))
-                .build();
+            bitbayOrderBookAppComponent = DaggerBitbayOrderBookComponent
+                    .builder()
+                    .bitbayOrderBookModule(new BitbayOrderBookModule())
+                    .build();
+
+        }
 
     }
 
-}

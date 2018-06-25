@@ -11,8 +11,6 @@ import com.pwr.janek.bitbayapi.R;
 
 import java.util.List;
 
-import retrofit2.Response;
-
 /*
    Adapter do customowego widoku RECYCLERVIEW, layout pojedynczego pola w pliku "recyclerview_row"
  */
@@ -44,8 +42,8 @@ public class BitbayOrderBookAdapter extends RecyclerView.Adapter<BitbayOrderBook
         return orderBook.getBids().size();
     }
 
-    public void setItems(Response<OrderBook> orderBook) {
-        this.orderBook = orderBook.body();
+    public void setItems(OrderBook orderBook) {
+        this.orderBook = orderBook;
         notifyDataSetChanged();
     }
 
