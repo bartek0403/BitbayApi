@@ -1,6 +1,7 @@
 package com.pwr.janek.bitbayapi.MVP;
 
 import com.pwr.janek.bitbayapi.ApiInterface.BitbayOrderBookApi;
+import com.pwr.janek.bitbayapi.ApplicationFeatures.BitbayApp;
 import com.pwr.janek.bitbayapi.Model.OrderBook;
 
 import javax.inject.Inject;
@@ -15,12 +16,12 @@ public class Presenter implements MVPContract.Presenter {
     @Nullable
     MVPContract.View view;
 
+    @Inject
     BitbayOrderBookApi bitbayOrderBookApi;
 
-    @Inject
-    public Presenter(BitbayOrderBookApi bitbayOrderBookApi){
-        this.bitbayOrderBookApi = bitbayOrderBookApi;
 
+    public Presenter(){
+        BitbayApp.getAppComponent().inject(this);
     }
 
     @Override

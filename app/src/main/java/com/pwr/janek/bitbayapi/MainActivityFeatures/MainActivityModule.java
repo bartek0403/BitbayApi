@@ -1,7 +1,6 @@
 package com.pwr.janek.bitbayapi.MainActivityFeatures;
 
 import com.pwr.janek.bitbayapi.Adapter.BitbayOrderBookAdapter;
-import com.pwr.janek.bitbayapi.ApiInterface.BitbayOrderBookApi;
 import com.pwr.janek.bitbayapi.MVP.Presenter;
 
 import dagger.Module;
@@ -11,13 +10,11 @@ import dagger.Provides;
 public class MainActivityModule {
 
     @Provides
-    @MainActivityScope
-    public Presenter getPresenter(BitbayOrderBookApi bitbayOrderBookApi){
-        return new Presenter(bitbayOrderBookApi);
+    public Presenter getPresenter(){
+        return new Presenter();
     }
 
     @Provides
-    @MainActivityScope
     public BitbayOrderBookAdapter bitbayOrderBookAdapter(){
         return new BitbayOrderBookAdapter();
     }

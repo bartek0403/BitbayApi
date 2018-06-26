@@ -1,19 +1,16 @@
 package com.pwr.janek.bitbayapi.MainActivityFeatures;
 
-import com.pwr.janek.bitbayapi.BitbayOrderBookFeatures.BitbayOrderBookComponent;
 import com.pwr.janek.bitbayapi.MainActivity;
 
 import dagger.Component;
 
 /*
     Component umożliwiający wstrzykowanie instancji do MainActivity.
-    Umożliwia tworzenie instancji zdefiniowanych w MainActictivityModule (BitbayOrderBookAdapter)
-    oraz instancji zdefiniowanych w BitbayOrderBookComponent (BitbayOrderBookApi)
+    Umożliwia tworzenie instancji zdefiniowanych w MainActictivityModule (adapter, presenter)
  */
 
-@MainActivityScope
-@Component(dependencies = BitbayOrderBookComponent.class, modules = MainActivityModule.class)
+@Component(modules = MainActivityModule.class)
 public interface MainActivityComponent {
-    void injectMainActivity(MainActivity mainActivity);
+    void inject(MainActivity mainActivity);
 
 }

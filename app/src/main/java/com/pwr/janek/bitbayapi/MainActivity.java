@@ -7,10 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.pwr.janek.bitbayapi.Adapter.BitbayOrderBookAdapter;
-import com.pwr.janek.bitbayapi.ApplicationFeatures.BitbayOrderBookApp;
 import com.pwr.janek.bitbayapi.MVP.MVPContract;
 import com.pwr.janek.bitbayapi.MVP.Presenter;
-
 import com.pwr.janek.bitbayapi.MainActivityFeatures.DaggerMainActivityComponent;
 import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityComponent;
 import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityModule;
@@ -50,12 +48,10 @@ public class MainActivity extends AppCompatActivity implements MVPContract.View 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        MainActivityComponent mainActivityComponent = DaggerMainActivityComponent
-                .builder()
+        MainActivityComponent mainActivityComponent = DaggerMainActivityComponent.builder()
                 .mainActivityModule(new MainActivityModule())
-                .bitbayOrderBookComponent(BitbayOrderBookApp.get(this).getBitbayOrderBookAppComponent())
                 .build();
-        mainActivityComponent.injectMainActivity(this);
+        mainActivityComponent.inject(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         presenter.setView(this);
