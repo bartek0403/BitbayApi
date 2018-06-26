@@ -14,7 +14,6 @@ public class Presenter implements MVPContract.Presenter {
 
     @Nullable
     MVPContract.View view;
-    MVPContract.Model model;
 
     BitbayOrderBookApi bitbayOrderBookApi;
 

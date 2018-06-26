@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pwr.janek.bitbayapi.ApiInterface.BitbayOrderBookApi;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -42,7 +44,7 @@ public class BitbayOrderBookModule {
                 .build();
     }
 
-    @BitbayOrderBookScope
+    @Singleton
     @Provides
     public Retrofit getRetrofit(OkHttpClient okHttpClient, GsonConverterFactory gsonConverterFactory){
         return new Retrofit.Builder()

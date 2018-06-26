@@ -2,6 +2,8 @@ package com.pwr.janek.bitbayapi.BitbayOrderBookFeatures;
 
 import com.pwr.janek.bitbayapi.ApiInterface.BitbayOrderBookApi;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 
 /*
@@ -9,7 +11,7 @@ import dagger.Component;
  * Component dla modułu BitbayOrderBookModule
  */
 
-@BitbayOrderBookScope
+@Singleton
 @Component(modules = BitbayOrderBookModule.class)
 public interface BitbayOrderBookComponent  {
     BitbayOrderBookApi getBitbayOrderBook();

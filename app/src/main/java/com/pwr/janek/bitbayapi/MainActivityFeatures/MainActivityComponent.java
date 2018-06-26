@@ -1,7 +1,6 @@
 package com.pwr.janek.bitbayapi.MainActivityFeatures;
 
 import com.pwr.janek.bitbayapi.BitbayOrderBookFeatures.BitbayOrderBookComponent;
-import com.pwr.janek.bitbayapi.MVP.Presenter;
 import com.pwr.janek.bitbayapi.MainActivity;
 
 import dagger.Component;
@@ -16,5 +15,5 @@ import dagger.Component;
 @Component(dependencies = BitbayOrderBookComponent.class, modules = MainActivityModule.class)
 public interface MainActivityComponent {
     void injectMainActivity(MainActivity mainActivity);
-    void injectPresenter (Presenter presenter);
+
 }

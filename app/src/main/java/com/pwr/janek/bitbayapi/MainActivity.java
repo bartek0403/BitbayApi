@@ -26,7 +26,6 @@ import butterknife.ButterKnife;
  */
 public class MainActivity extends AppCompatActivity implements MVPContract.View {
 
-
     @Inject
     Presenter presenter;
 
@@ -50,9 +49,10 @@ public class MainActivity extends AppCompatActivity implements MVPContract.View 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         MainActivityComponent mainActivityComponent = DaggerMainActivityComponent
                 .builder()
-                .mainActivityModule(new MainActivityModule(this))
+                .mainActivityModule(new MainActivityModule())
                 .bitbayOrderBookComponent(BitbayOrderBookApp.get(this).getBitbayOrderBookAppComponent())
                 .build();
         mainActivityComponent.injectMainActivity(this);

@@ -15,11 +15,6 @@ public class MVPContract {
 
     }
 
-    public interface Model{
-
-        void fetchData();
-        void setPresenter(MVPContract.Presenter presenter);
-    }
 
 
 }

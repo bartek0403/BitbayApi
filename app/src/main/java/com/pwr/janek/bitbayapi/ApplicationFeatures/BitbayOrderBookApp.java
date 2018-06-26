@@ -20,8 +20,6 @@ public class BitbayOrderBookApp extends Application {
         return bitbayOrderBookAppComponent;
     }
 
-
-
     public static BitbayOrderBookApp get(Activity activity) {
         return (BitbayOrderBookApp) activity.getApplication();
     }
