@@ -10,9 +10,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.pwr.janek.bitbayapi.MainActivityFeatures.DaggerMainActivityComponent;
-import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityComponent;
-import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityModule;
+import com.pwr.janek.bitbayapi.MainActivityFeatures.DaggerOrderBookActivityComponent;
+import com.pwr.janek.bitbayapi.MainActivityFeatures.OrderBookActivityComponent;
+import com.pwr.janek.bitbayapi.MainActivityFeatures.OrderBookActivityModule;
 
 import javax.inject.Inject;
 
@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 /*
  * Klasa odpowiedzialna za przechowywanie zależności poziomu AKTYWNOŚCI - API i ADAPTER
  */
-public class MainActivity extends FragmentActivity {
+public class OrderBookActivity extends FragmentActivity {
 
     @BindView(R.id.pager)
     ViewPager viewPager;
@@ -51,13 +51,13 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_orderbook);
         ButterKnife.bind(this);
 
-        MainActivityComponent mainActivityComponent = DaggerMainActivityComponent.builder()
-                .mainActivityModule(new MainActivityModule(this))
+        OrderBookActivityComponent orderBookActivityComponent = DaggerOrderBookActivityComponent.builder()
+                .orderBookActivityModule(new OrderBookActivityModule(this))
                 .build();
-        mainActivityComponent.inject(this);
+        orderBookActivityComponent.inject(this);
 
         pagerAdapter = new FragmentPagerAdapter(fragmentManager);
         viewPager.setAdapter(pagerAdapter);

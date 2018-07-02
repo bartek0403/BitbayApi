@@ -2,17 +2,17 @@ package com.pwr.janek.bitbayapi.MainActivityFeatures;
 
 import com.pwr.janek.bitbayapi.AskFragment;
 import com.pwr.janek.bitbayapi.BidFragment;
-import com.pwr.janek.bitbayapi.MainActivity;
+import com.pwr.janek.bitbayapi.OrderBookActivity;
 
 import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class MainActivityModule {
+public class OrderBookActivityModule {
 
-    MainActivity activity;
+    OrderBookActivity activity;
 
-    public MainActivityModule(MainActivity activity){
+    public OrderBookActivityModule(OrderBookActivity activity){
         this.activity = activity;
     }
 

@@ -1,6 +1,6 @@
 package com.pwr.janek.bitbayapi.MainActivityFeatures;
 
-import com.pwr.janek.bitbayapi.MainActivity;
+import com.pwr.janek.bitbayapi.OrderBookActivity;
 
 import dagger.Component;
 
@@ -9,8 +9,8 @@ import dagger.Component;
     Umożliwia tworzenie instancji zdefiniowanych w MainActictivityModule (adapter, presenter)
  */
 
-@Component(modules = MainActivityModule.class)
-public interface MainActivityComponent {
-    void inject(MainActivity mainActivity);
+@Component(modules = OrderBookActivityModule.class)
+public interface OrderBookActivityComponent {
+    void inject(OrderBookActivity orderBookActivity);
 
 }
