@@ -1,7 +1,8 @@
 package com.pwr.janek.bitbayapi.MainActivityFeatures;
 
-import com.pwr.janek.bitbayapi.Adapter.BitbayOrderBookAdapter;
-import com.pwr.janek.bitbayapi.MVP.Presenter;
+import com.pwr.janek.bitbayapi.AskFragment;
+import com.pwr.janek.bitbayapi.BidFragment;
+import com.pwr.janek.bitbayapi.MainActivity;
 
 import dagger.Module;
 import dagger.Provides;
@@ -9,14 +10,25 @@ import dagger.Provides;
 @Module
 public class MainActivityModule {
 
-    @Provides
-    public Presenter getPresenter(){
-        return new Presenter();
+    MainActivity activity;
+
+    public MainActivityModule(MainActivity activity){
+        this.activity = activity;
     }
 
     @Provides
-    public BitbayOrderBookAdapter bitbayOrderBookAdapter(){
-        return new BitbayOrderBookAdapter();
+    public android.support.v4.app.FragmentManager getFragmentManager(){
+        return activity.getSupportFragmentManager();
+    }
+
+    @Provides
+    public BidFragment getBidFragment(){
+        return new BidFragment();
+    }
+
+    @Provides
+    public AskFragment getAskFragment(){
+        return new AskFragment();
     }
 
 }

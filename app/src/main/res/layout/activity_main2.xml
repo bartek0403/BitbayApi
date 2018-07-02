@@ -1,0 +1,13 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <fragment android:name="com.pwr.janek.bitbayapi.BidFragment"
+            android:id="@+id/fragment_bid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <fragment android:name="com.pwr.janek.bitbayapi.AskFragment"
+            android:id="@+id/fragment_ask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+</LinearLayout>

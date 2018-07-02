@@ -2,6 +2,7 @@ package com.pwr.janek.bitbayapi.Adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,10 @@ import java.util.List;
 public class BitbayOrderBookAdapter extends RecyclerView.Adapter<BitbayOrderBookViewHolder> {
 
     private OrderBook orderBook;
+    private String type;
 
-    public BitbayOrderBookAdapter() {
+    public BitbayOrderBookAdapter(String type) {
+        this.type = type;
     }
 
     @NonNull
@@ -32,7 +35,18 @@ public class BitbayOrderBookAdapter extends RecyclerView.Adapter<BitbayOrderBook
 
     @Override
     public void onBindViewHolder(@NonNull BitbayOrderBookViewHolder holder, int position) {
-        List<Double> orderBookElement = orderBook.getBids().get(position);
+        List<Double> orderBookElement;
+        if(type.equals("ask")){
+            orderBookElement = orderBook.getAsks().get(position);
+        }
+        else if(type.equals("bid")){
+            orderBookElement = orderBook.getBids().get(position);
+        }
+        else {
+            Log.i("OrderBookAdapter", "onBindViewHolder: incorrect adapter type, switching to default /ask/ ");
+            orderBookElement = orderBook.getBids().get(position);
+        }
+
         holder.price.setText(String.valueOf(orderBookElement.get(0)));
         holder.depth.setText(String.valueOf(orderBookElement.get(1)));
     }
