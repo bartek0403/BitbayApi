@@ -1,4 +1,4 @@
-package com.pwr.janek.bitbayapi.Adapter;
+package com.pwr.janek.bitbayapi.OrderBookFeatures.Adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -16,25 +16,25 @@ import java.util.List;
    Adapter do customowego widoku RECYCLERVIEW, layout pojedynczego pola w pliku "recyclerview_row"
  */
 
-public class BitbayOrderBookAdapter extends RecyclerView.Adapter<BitbayOrderBookViewHolder> {
+public class OrderBookAdapter extends RecyclerView.Adapter<OrderBookViewHolder> {
 
     private OrderBook orderBook;
     private String type;
 
-    public BitbayOrderBookAdapter(String type) {
+    public OrderBookAdapter(String type) {
         this.type = type;
     }
 
     @NonNull
     @Override
-    public BitbayOrderBookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public OrderBookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_row,
                 parent, false);
-        return new BitbayOrderBookViewHolder(view);
+        return new OrderBookViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BitbayOrderBookViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OrderBookViewHolder holder, int position) {
         List<Double> orderBookElement;
         if(type.equals("ask")){
             orderBookElement = orderBook.getAsks().get(position);

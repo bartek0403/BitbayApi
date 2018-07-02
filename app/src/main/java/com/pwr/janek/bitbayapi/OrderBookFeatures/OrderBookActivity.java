@@ -1,4 +1,4 @@
-package com.pwr.janek.bitbayapi;
+package com.pwr.janek.bitbayapi.OrderBookFeatures;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,9 +10,12 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.pwr.janek.bitbayapi.MainActivityFeatures.DaggerOrderBookActivityComponent;
-import com.pwr.janek.bitbayapi.MainActivityFeatures.OrderBookActivityComponent;
-import com.pwr.janek.bitbayapi.MainActivityFeatures.OrderBookActivityModule;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.AskFragment;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.BidFragment;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookDI.DaggerOrderBookActivityComponent;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookDI.OrderBookActivityComponent;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookDI.OrderBookActivityModule;
+import com.pwr.janek.bitbayapi.R;
 
 import javax.inject.Inject;
 

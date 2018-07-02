@@ -1,4 +1,4 @@
-package com.pwr.janek.bitbayapi;
+package com.pwr.janek.bitbayapi.OrderBookFeatures;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,13 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.pwr.janek.bitbayapi.Adapter.BitbayOrderBookAdapter;
-import com.pwr.janek.bitbayapi.FragmentFeatures.DaggerFragmentComponent;
-import com.pwr.janek.bitbayapi.FragmentFeatures.FragmentComponent;
-import com.pwr.janek.bitbayapi.FragmentFeatures.FragmentModule;
-import com.pwr.janek.bitbayapi.MVP.MVPContract;
-import com.pwr.janek.bitbayapi.MVP.Presenter;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.Adapter.OrderBookAdapter;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.FragmentsDI.DaggerFragmentComponent;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.FragmentsDI.FragmentComponent;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.FragmentsDI.FragmentModule;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP.MVPContract;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP.Presenter;
 import com.pwr.janek.bitbayapi.Model.OrderBook;
+import com.pwr.janek.bitbayapi.R;
 
 import javax.inject.Inject;
 
@@ -34,7 +35,7 @@ public class AskFragment extends Fragment implements MVPContract.View, SwipeRefr
     SwipeRefreshLayout swipeRefreshLayout;
 
 
-    BitbayOrderBookAdapter adapter = new BitbayOrderBookAdapter("ask");
+    OrderBookAdapter adapter = new OrderBookAdapter("ask");
 
 
     public AskFragment() {

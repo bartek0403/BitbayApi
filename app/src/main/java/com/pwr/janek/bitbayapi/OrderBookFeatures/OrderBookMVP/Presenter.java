@@ -1,7 +1,7 @@
-package com.pwr.janek.bitbayapi.MVP;
+package com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP;
 
 import com.pwr.janek.bitbayapi.ApiInterface.BitbayOrderBookApi;
-import com.pwr.janek.bitbayapi.ApplicationFeatures.BitbayApp;
+import com.pwr.janek.bitbayapi.ApplicationDI.BitbayApp;
 import com.pwr.janek.bitbayapi.Model.OrderBook;
 
 import javax.inject.Inject;

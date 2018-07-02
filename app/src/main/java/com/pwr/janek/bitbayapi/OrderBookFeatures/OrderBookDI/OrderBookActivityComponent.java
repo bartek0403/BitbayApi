@@ -1,6 +1,6 @@
-package com.pwr.janek.bitbayapi.MainActivityFeatures;
+package com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookDI;
 
-import com.pwr.janek.bitbayapi.OrderBookActivity;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookActivity;
 
 import dagger.Component;
 

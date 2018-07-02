@@ -1,7 +1,7 @@
-package com.pwr.janek.bitbayapi.ApplicationFeatures;
+package com.pwr.janek.bitbayapi.ApplicationDI;
 
 
-import com.pwr.janek.bitbayapi.MVP.Presenter;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP.Presenter;
 
 import javax.inject.Singleton;
 

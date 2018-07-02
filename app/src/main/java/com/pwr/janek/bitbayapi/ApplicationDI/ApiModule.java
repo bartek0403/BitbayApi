@@ -1,4 +1,4 @@
-package com.pwr.janek.bitbayapi.ApplicationFeatures;
+package com.pwr.janek.bitbayapi.ApplicationDI;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

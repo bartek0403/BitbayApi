@@ -1,4 +1,4 @@
-package com.pwr.janek.bitbayapi.MVP;
+package com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP;
 
 import com.pwr.janek.bitbayapi.Model.OrderBook;
 

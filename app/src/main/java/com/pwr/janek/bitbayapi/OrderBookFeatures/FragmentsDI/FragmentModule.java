@@ -1,6 +1,6 @@
-package com.pwr.janek.bitbayapi.FragmentFeatures;
+package com.pwr.janek.bitbayapi.OrderBookFeatures.FragmentsDI;
 
-import com.pwr.janek.bitbayapi.MVP.Presenter;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP.Presenter;
 
 import dagger.Module;
 import dagger.Provides;
