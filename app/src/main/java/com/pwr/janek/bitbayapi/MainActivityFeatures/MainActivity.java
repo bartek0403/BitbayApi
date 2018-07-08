@@ -3,12 +3,13 @@ package com.pwr.janek.bitbayapi.MainActivityFeatures;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.CandleStickChart;
+import com.github.mikephil.charting.data.CandleData;
 import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityDI.ContextModule;
 import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityDI.DaggerMainActivityComponent;
 import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityDI.MainActivityComponent;
@@ -25,7 +26,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
+//TODO: Połączyć MainActivity z OrderBookActivity
+//TODO: Wykres w MainActivity
+//TODO: Poprawić layout
+
 public class MainActivity extends AppCompatActivity implements MVPMainActivityContract.View {
+
+    @BindView(R.id.chart)
+    CandleStickChart chart;
 
     @BindView(R.id.button_refresh)
     TextView refresh;
@@ -61,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
 
     @Inject
     SharedPreferences.Editor sharedPreferencesEditor;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,8 +112,16 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
     }
 
     @Override
-    public void showFailureMsg() {
-        Toast.makeText(this,"Failed",Toast.LENGTH_SHORT).show();
+    public void showFailureMsg(String msg) {
+        Toast.makeText(this, msg ,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showChart(CandleData candleData) {
+            this.chart.setData(candleData);
+            this.chart.getXAxis().setDrawLabels(false);
+            this.chart.animateXY(500,500);
+            this.chart.invalidate();
     }
 
     @OnClick(R.id.button_refresh)
@@ -116,19 +131,11 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
 
     @OnItemSelected(R.id.spiner_fiat)
     void onFiatSelected(int position){
-       // sharedPreferencesEditor.putString(getString(R.string.fiatTicker),
-       //         String.valueOf(spinner_fiat.getItemAtPosition(position)));
-       // sharedPreferencesEditor.commit();
         presenter.saveFiatTicker(spinner_fiat.getItemAtPosition(position).toString());
-        Log.i("Spiner fiat", "onFiatSelected: " + spinner_fiat.getItemAtPosition(position).toString());
     }
 
     @OnItemSelected(R.id.spiner_crypto)
     void onCryptoSelected(int position){
-       // sharedPreferencesEditor.putString(getString(R.string.cryptoTicker),
-       //         String.valueOf(spinner_fiat.getItemAtPosition(position)));
-        //sharedPreferencesEditor.commit();
         presenter.saveCryptoTicker(spinner_crypto.getItemAtPosition(position).toString());
-        Log.i("spiner crypto", "onCryptoSelected: " + spinner_crypto.getItemAtPosition(position).toString());
     }
 }

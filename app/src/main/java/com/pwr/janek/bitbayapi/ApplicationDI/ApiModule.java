@@ -2,6 +2,7 @@ package com.pwr.janek.bitbayapi.ApplicationDI;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.pwr.janek.bitbayapi.ApiInterface.ChartApi;
 import com.pwr.janek.bitbayapi.ApiInterface.OrderBookApi;
 import com.pwr.janek.bitbayapi.ApiInterface.TickerApi;
 
@@ -16,6 +17,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class ApiModule {
+
+//TODO Przenieść API do modułów
+
+    @Provides
+    @Singleton
+    public ChartApi getChartApi(Retrofit retrofit){
+        return retrofit.create(ChartApi.class);
+    }
 
     @Provides
     @Singleton

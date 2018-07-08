@@ -69,4 +69,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/texxtView_volume"/>
 
+    <com.github.mikephil.charting.charts.CandleStickChart
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/chart">
+    </com.github.mikephil.charting.charts.CandleStickChart>
+
 </LinearLayout>
