@@ -13,7 +13,7 @@ import com.pwr.janek.bitbayapi.OrderBookFeatures.Adapter.OrderBookAdapter;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.FragmentsDI.DaggerFragmentComponent;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.FragmentsDI.FragmentComponent;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.FragmentsDI.FragmentModule;
-import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP.MVPContract;
+import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP.MVPOrderBOokContract;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP.Presenter;
 import com.pwr.janek.bitbayapi.Model.OrderBook;
 import com.pwr.janek.bitbayapi.R;
@@ -23,7 +23,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BidFragment extends Fragment implements MVPContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class BidFragment extends Fragment implements MVPOrderBOokContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     @Inject
     Presenter presenter;

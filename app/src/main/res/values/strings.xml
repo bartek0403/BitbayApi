@@ -2,7 +2,16 @@
     <string name="app_name">BitbayApi</string>
     <string name="price">Cena</string>
     <string name="depth">Głębokość</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prefkey">Ticker</string>
+    <string name="fiatTicker">fiatTicker</string>
+    <string name="cryptoTicker">cryptoTicker</string>
+    <string name="refresh">Refresh</string>
+    <string-array name="CryptoTickers">
+        <item>BTC</item>
+        <item>ETH</item>
+    </string-array>
+    <string-array name="FiatTickers">
+        <item>PLN</item>
+        <item>USD</item>
+    </string-array>
 </resources>

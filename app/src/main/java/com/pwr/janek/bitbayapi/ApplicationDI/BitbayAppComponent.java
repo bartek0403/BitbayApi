@@ -10,5 +10,6 @@ import dagger.Component;
 @Component(modules = {ApiModule.class, AppContextModule.class})
 public interface BitbayAppComponent {
 
-    public void inject(Presenter presenter);
+    void inject(Presenter presenter);
+    void inject(com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityMVP.Presenter presenter);
 }

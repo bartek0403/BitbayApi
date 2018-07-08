@@ -12,10 +12,6 @@ public class BitbayApp extends Application {
 
     private static BitbayAppComponent bitbayAppComponent;
 
-    public BitbayAppComponent getBitbayAppComponent() {
-        return bitbayAppComponent;
-    }
-
     public static BitbayAppComponent getAppComponent() {
         return bitbayAppComponent;
     }
