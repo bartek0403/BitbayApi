@@ -14,6 +14,9 @@ public class MVPMainActivityContract  {
         void fetchData();
         void saveCryptoTicker(String crypoTicker);
         void saveFiatTicker(String fiatTicker);
+        String getFiatTicker();
+
+        String getCryptoTicker();
     }
 
 }

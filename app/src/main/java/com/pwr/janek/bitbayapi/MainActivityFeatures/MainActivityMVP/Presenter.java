@@ -125,4 +125,14 @@ public class Presenter implements MVPMainActivityContract.Presenter{
     public void saveFiatTicker(String fiatTicker) {
         this.fiatTicker = fiatTicker;
     }
+
+    @Override
+    public String getFiatTicker() {
+        return fiatTicker;
+    }
+
+    @Override
+    public String getCryptoTicker() {
+        return cryptoTicker;
+    }
 }

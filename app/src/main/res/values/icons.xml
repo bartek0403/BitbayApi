@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="currentPrice">&#xf201;</string>
+    <string name="high">&#xf062;</string>
+    <string name="low">&#xf063;</string>
+    <string name="open">&#xf52b;</string>
+    <string name="close">&#xf52a;</string>
+    <string name="vwap">&#xf24e;</string>
+    <string name="average">&#xf4c0;</string>
+    <string name="volume">&#xf080;</string>
+</resources>

@@ -6,73 +6,120 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivityFeatures.MainActivity">
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <android.support.v7.widget.Toolbar
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:elevation="4dp"
+            android:background="@color/colorPrimaryDark"
+            android:theme="@style/Base.ThemeOverlay.AppCompat.ActionBar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spiner_crypto"
+                android:padding="8dp">
+            </Spinner>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spiner_fiat"
+                android:padding="8dp">
+            </Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/refresh"
+                android:clickable="true"
+                android:id="@+id/button_refresh"/>
+
+        </android.support.v7.widget.Toolbar>
+    </RelativeLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
-        android:elevation="4dp"
-        android:background="@color/colorPrimaryDark"
-        android:theme="@style/Base.ThemeOverlay.AppCompat.ActionBar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/spiner_crypto"
-            android:padding="8dp">
-        </Spinner>
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/spiner_fiat"
-            android:padding="8dp">
-        </Spinner>
-
+        android:orientation="horizontal"
+        android:layout_margin="8dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/refresh"
-            android:clickable="true"
-            android:id="@+id/button_refresh"/>
+            android:text="@string/currentPrice"
+            android:id="@+id/icon_currentPrice"
+            android:layout_weight="1"
+            android:textSize="32sp"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_current"
+            android:layout_weight="1"
+            android:textSize="32sp"
+            android:text="20000 PLN"/>
+    </LinearLayout>
 
-    </android.support.v7.widget.Toolbar>
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon_high"
+            android:text="@string/high"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_high"
+            android:text="20000 PLN"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon_low"
+            android:textSize="16sp"
+            android:text="@string/low"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_low"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:text="20000 PLN"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon_volume"
+            android:textSize="16sp"
+            android:text="@string/volume"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_volume"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_current"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_high"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_low"/>
-    <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/textView_vwap"/>
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_average"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/texxtView_volume"/>
 
     <com.github.mikephil.charting.charts.CandleStickChart
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/chart">
     </com.github.mikephil.charting.charts.CandleStickChart>
+
 
 </LinearLayout>

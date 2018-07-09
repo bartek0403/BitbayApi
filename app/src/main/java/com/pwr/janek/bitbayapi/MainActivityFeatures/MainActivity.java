@@ -1,6 +1,7 @@
 package com.pwr.janek.bitbayapi.MainActivityFeatures;
 
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.CandleStickChart;
 import com.github.mikephil.charting.data.CandleData;
+import com.pwr.janek.bitbayapi.FontHelper;
 import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityDI.ContextModule;
 import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityDI.DaggerMainActivityComponent;
 import com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityDI.MainActivityComponent;
@@ -27,7 +29,6 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
 //TODO: Połączyć MainActivity z OrderBookActivity
-//TODO: Wykres w MainActivity
 //TODO: Poprawić layout
 
 public class MainActivity extends AppCompatActivity implements MVPMainActivityContract.View {
@@ -55,13 +56,7 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
     @BindView(R.id.textView_low)
     TextView low;
 
-    @BindView(R.id.textView_vwap)
-    TextView vwap;
-
-    @BindView(R.id.textView_average)
-    TextView average;
-
-    @BindView(R.id.texxtView_volume)
+    @BindView(R.id.textView_volume)
     TextView volume;
 
     @Inject
@@ -69,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
 
     @Inject
     SharedPreferences.Editor sharedPreferencesEditor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +89,13 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
 
         presenter.setView(this);
         presenter.fetchData();
+
+        Typeface iconFont = FontHelper.getTypeface(getApplicationContext(), FontHelper.FONTAWESOME);
+        FontHelper.markAsIconContainer(findViewById(R.id.icon_currentPrice), iconFont);
+        FontHelper.markAsIconContainer(findViewById(R.id.icon_high), iconFont);
+        FontHelper.markAsIconContainer(findViewById(R.id.icon_low), iconFont);
+        FontHelper.markAsIconContainer(findViewById(R.id.icon_volume), iconFont);
+
     }
 
 
@@ -100,12 +103,10 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
     @Override
     public void showData(Ticker ticker) {
         if(ticker != null) {
-            current.setText(String.valueOf(ticker.getLast()));
-            high.setText((String.valueOf(ticker.getMax())));
-            low.setText(String.valueOf(ticker.getMin()));
-            vwap.setText(String.valueOf(ticker.getVwap()));
-            average.setText(String.valueOf(ticker.getAverage()));
-            volume.setText(String.valueOf(ticker.getVolume()));
+            current.setText(String.valueOf(ticker.getLast()) + " " + presenter.getFiatTicker() );
+            high.setText(String.valueOf(ticker.getMax()) + " " +presenter.getFiatTicker());
+            low.setText(String.valueOf(ticker.getMin()) + " " + presenter.getFiatTicker());
+            volume.setText(String.format("%.2f" ,ticker.getVolume()) + " " + presenter.getCryptoTicker());
         }
 
 
