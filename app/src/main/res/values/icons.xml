@@ -8,4 +8,5 @@
     <string name="vwap">&#xf24e;</string>
     <string name="average">&#xf4c0;</string>
     <string name="volume">&#xf080;</string>
+    <string name="orderBook">&#xf02d;</string>
 </resources>

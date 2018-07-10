@@ -1,5 +1,6 @@
 package com.pwr.janek.bitbayapi.OrderBookFeatures;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -10,8 +11,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.pwr.janek.bitbayapi.OrderBookFeatures.AskFragment;
-import com.pwr.janek.bitbayapi.OrderBookFeatures.BidFragment;
+import com.pwr.janek.bitbayapi.FontHelper;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookDI.DaggerOrderBookActivityComponent;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookDI.OrderBookActivityComponent;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookDI.OrderBookActivityModule;
@@ -61,6 +61,9 @@ public class OrderBookActivity extends FragmentActivity {
                 .orderBookActivityModule(new OrderBookActivityModule(this))
                 .build();
         orderBookActivityComponent.inject(this);
+
+        Typeface iconFont = FontHelper.getTypeface(getApplicationContext(), FontHelper.FONTAWESOME);
+        FontHelper.markAsIconContainer(findViewById(R.id.icon_orderBook2), iconFont);
 
         pagerAdapter = new FragmentPagerAdapter(fragmentManager);
         viewPager.setAdapter(pagerAdapter);

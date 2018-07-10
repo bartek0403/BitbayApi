@@ -36,7 +36,7 @@ public class Presenter implements MVPOrderBOokContract.Presenter {
     public void refresh() {
 
         if(view != null){
-            Call<OrderBook> orderBookCall = orderBookApi.getOrderBook("/" + cryptoTicker + fiatTicker + "/orderbook.json");
+            Call<OrderBook> orderBookCall = orderBookApi.getOrderBook(  cryptoTicker + fiatTicker + "/orderbook.json");
             orderBookCall.enqueue(new Callback<OrderBook>() {
                 @Override
                 public void onResponse(Call<OrderBook> call, Response<OrderBook> response) {

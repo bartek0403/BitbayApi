@@ -1,17 +1,29 @@
 <resources>
     <string name="app_name">BitbayApi</string>
+    <string name="book">Oferty</string>
     <string name="price">Cena</string>
     <string name="depth">Głębokość</string>
     <string name="prefkey">Ticker</string>
     <string name="fiatTicker">fiatTicker</string>
     <string name="cryptoTicker">cryptoTicker</string>
     <string name="refresh">Refresh</string>
+    <string name="transition">transition </string>
     <string-array name="CryptoTickers">
         <item>BTC</item>
         <item>ETH</item>
+        <item>LSK</item>
+        <item>LTC</item>
+        <item>GAME</item>
+        <item>DASH</item>
+        <item>BCC</item>
+        <item>BTG</item>
+        <item>KZC</item>
+        <item>XIN</item>
+        <item>XRP</item>
     </string-array>
     <string-array name="FiatTickers">
         <item>PLN</item>
         <item>USD</item>
+        <item>EUR</item>
     </string-array>
 </resources>

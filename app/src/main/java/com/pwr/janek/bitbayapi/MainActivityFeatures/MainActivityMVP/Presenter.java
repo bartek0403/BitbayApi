@@ -2,12 +2,10 @@ package com.pwr.janek.bitbayapi.MainActivityFeatures.MainActivityMVP;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Paint;
 
-import com.github.mikephil.charting.data.CandleData;
-import com.github.mikephil.charting.data.CandleDataSet;
-import com.github.mikephil.charting.data.CandleEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.pwr.janek.bitbayapi.ApiInterface.ChartApi;
 import com.pwr.janek.bitbayapi.ApiInterface.TickerApi;
 import com.pwr.janek.bitbayapi.ApplicationDI.BitbayApp;
@@ -67,7 +65,9 @@ public class Presenter implements MVPMainActivityContract.Presenter{
                     view.showFailureMsg("Failed fetching ticker");
                 }
             });
-            Call<DailyChart> dailyChartCall = chartApi.getDailyChart("https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=20&e=Bitbay");
+            Call<DailyChart> dailyChartCall = chartApi.getDailyChart("https://min-api.cryptocompare.com/data/histoday?fsym=" +
+                    cryptoTicker +"&tsym=" +
+                    fiatTicker + "&limit=30&e=Bitbay");
             dailyChartCall.enqueue(new Callback<DailyChart>() {
                 @Override
                 public void onResponse(Call<DailyChart> call, Response<DailyChart> response) {
@@ -88,30 +88,23 @@ public class Presenter implements MVPMainActivityContract.Presenter{
 
         if (chart != null) {
             List<Datum> chartData = chart.getData();
-            List<CandleEntry> candleEntries = new ArrayList<CandleEntry>();
+            List<Entry> entries = new ArrayList<Entry>();
 
+            //TODO Zamienić timestamp na datę
             for (int i = 0; i < chart.getData().size(); i++) {
-                candleEntries.add(new CandleEntry(i,
-                        chartData.get(i).getHigh(),
-                        chartData.get(i).getLow(),
-                        chartData.get(i).getOpen(),
-                        chartData.get(i).getClose()));
+                entries.add(new Entry(i,
+                        chartData.get(i).getHigh()));
             }
 
-            CandleDataSet cds = new CandleDataSet(candleEntries, "ChartData");
-            cds.setVisible(true);
-            cds.setColors(ColorTemplate.VORDIPLOM_COLORS);
-            cds.setShadowColor(Color.DKGRAY);
-            cds.setShadowWidth(0.7f);
-            cds.setDecreasingColor(Color.RED);
-            cds.setDecreasingPaintStyle(Paint.Style.FILL_AND_STROKE);
-            cds.setIncreasingColor(Color.GREEN);
-            cds.setIncreasingPaintStyle(Paint.Style.FILL_AND_STROKE);
-            cds.setNeutralColor(Color.BLUE);
-            cds.setValueTextColor(Color.RED);
+            LineDataSet lds = new LineDataSet(entries, "ChartData");
+            lds.setVisible(true);
+            lds.setColors(Color.rgb(80,80,80));
+            lds.setDrawFilled(true);
+            lds.setFillColor(Color.BLUE);
+            lds.setValueTextColor(Color.BLACK);
 
-            CandleData candleData = new CandleData(cds);
-            view.showChart(candleData);
+            LineData lineData = new LineData(lds);
+            view.showChart(lineData);
 
         }
     }
@@ -134,5 +127,31 @@ public class Presenter implements MVPMainActivityContract.Presenter{
     @Override
     public String getCryptoTicker() {
         return cryptoTicker;
+    }
+
+
+    @Override
+    public void orderBookPressed() {
+        view.launchOrderBook();
+    }
+
+    @Override
+    public void lowPressed() {
+        view.showLowDialog();
+    }
+
+    @Override
+    public void volumePressed() {
+        view.showVolumeDialog();
+    }
+
+    @Override
+    public void highPressed() {
+        view.showHighDialog();
+    }
+
+    @Override
+    public void currentPricePressed() {
+        view.showCurrentPriceDialog();
     }
 }

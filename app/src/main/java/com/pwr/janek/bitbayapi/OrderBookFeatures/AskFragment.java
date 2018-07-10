@@ -9,13 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.pwr.janek.bitbayapi.Model.OrderBook;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.Adapter.OrderBookAdapter;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.FragmentsDI.DaggerFragmentComponent;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.FragmentsDI.FragmentComponent;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.FragmentsDI.FragmentModule;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP.MVPOrderBOokContract;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP.Presenter;
-import com.pwr.janek.bitbayapi.Model.OrderBook;
 import com.pwr.janek.bitbayapi.R;
 
 import javax.inject.Inject;
@@ -67,7 +67,6 @@ public class AskFragment extends Fragment implements MVPOrderBOokContract.View, 
                 .fragmentModule(new FragmentModule())
                 .build();
         fragmentComponent.inject(this);
-
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         presenter.setView(this);

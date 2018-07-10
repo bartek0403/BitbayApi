@@ -9,13 +9,14 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar"
             android:elevation="4dp"
             android:background="@color/colorPrimaryDark"
-            android:theme="@style/Base.ThemeOverlay.AppCompat.ActionBar"
+            app:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true">
 
@@ -56,6 +57,7 @@
             android:layout_weight="1"
             android:textSize="32sp"
             android:gravity="center"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,61 +67,108 @@
             android:text="20000 PLN"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
+
         <TextView
+            android:id="@+id/icon_high"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/icon_high"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/high"
-            android:textSize="16sp"
-            android:layout_weight="1"/>
+            android:textSize="16sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView_high"
             android:text="20000 PLN"
             android:textSize="16sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:layout_toEndOf="@id/icon_high"
+            android:layout_alignParentTop="true"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/icon_low"
             android:textSize="16sp"
             android:text="@string/low"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_low"
             android:layout_weight="1"
-            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/textView_low"
+            android:layout_margin="8dp"
+            android:layout_alignParentTop="true"
+           />
+
+        <TextView
+            android:id="@+id/textView_low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
             android:text="20000 PLN"
-            />
+            android:textSize="16sp" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/icon_volume"
-            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/icon_high"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/volume"
-            android:layout_weight="1"/>
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView_high"
+            android:layout_margin="8dp"
+            android:layout_toRightOf="@id/icon_volume"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/icon_orderBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/icon_low"
+            android:layout_alignTop="@+id/textView_volume"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/orderBook"
+            android:textSize="16sp"
+            android:transitionName="@string/transition"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView_volume"
-            android:textSize="16sp"
-            android:layout_weight="1"/>
+            android:layout_alignStart="@+id/textView_low"
+            android:layout_alignTop="@+id/textView_volume"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/book"
+            android:textSize="16sp" />
+</RelativeLayout>
 
-    </LinearLayout>
-
-
-    <com.github.mikephil.charting.charts.CandleStickChart
+    <com.github.mikephil.charting.charts.LineChart
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/chart">
-    </com.github.mikephil.charting.charts.CandleStickChart>
+    </com.github.mikephil.charting.charts.LineChart>
 
 
 </LinearLayout>

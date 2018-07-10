@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="currentPriceTitle">Aktualna cena</string>
+    <string name="currentPriceDialog">Pokazuje cenę ostatniej transakcji</string>
+    <string name="maxPriceDialog"> Kurs transakcji, która miała największą wartość</string>
+    <string name="maxPriceTitle">Maksymalna cena</string>
+    <string name="lowPriceTitle">Minimalna cena</string>
+    <string name="lowPriceDialog"> Kurs transakcji, która miała największą wartość </string>
+    <string name="volumeTitle">Wolumen</string>
+    <string name="volumeDialog">Wolumen ostatnich x godzin</string>
+    <string name="cancel">Anuluj</string>
+</resources>
