@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
     Presenter presenter;
     @Inject
     SharedPreferences.Editor sharedPreferencesEditor;
+    @Inject
+    AlertDialog.Builder builder;
 
 
     @Override
@@ -148,7 +150,6 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
 
     @Override
     public void showCurrentPriceDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle(R.string.currentPriceTitle);
         builder.setMessage(R.string.currentPriceDialog);
         AlertDialog dialog = builder.create();
@@ -166,7 +167,6 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
 
     @Override
     public void showVolumeDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle(R.string.volumeTitle);
         builder.setMessage(R.string.volumeDialog);
         AlertDialog dialog = builder.create();
@@ -175,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
 
     @Override
     public void showHighDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle(R.string.maxPriceTitle);
         builder.setMessage(R.string.maxPriceDialog);
         AlertDialog dialog = builder.create();
