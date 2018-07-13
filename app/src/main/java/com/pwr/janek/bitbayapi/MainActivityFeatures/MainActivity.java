@@ -138,11 +138,14 @@ public class MainActivity extends AppCompatActivity implements MVPMainActivityCo
             this.chart.setDescription(d);
             this.chart.getLegend().setEnabled(false);
             this.chart.invalidate();
+
     }
 
     @Override
     public void launchOrderBook() {
         Intent i = new Intent(this, OrderBookActivity.class);
+        i.putExtra("fiatTicker", presenter.getFiatTicker())
+                .putExtra("cryptoTicker", presenter.getCryptoTicker());
         ActivityOptions activityOptions = ActivityOptions
                 .makeSceneTransitionAnimation(this, orderBook, getString(R.string.transition));
         startActivity(i, activityOptions.toBundle());

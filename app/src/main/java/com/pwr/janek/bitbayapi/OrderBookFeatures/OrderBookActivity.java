@@ -89,9 +89,21 @@ public class OrderBookActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            if(position == 0)
-                 return bidFragment;
-            else return askFragment;
+            if(position == 0){
+                Bundle bundle = new Bundle();
+                bundle.putString("fiatTicker", getIntent().getStringExtra("fiatTicker"));
+                bundle.putString("cryptoTicker", getIntent().getStringExtra("cryptoTicker"));
+                bidFragment.setArguments(bundle);
+                return bidFragment;
+            }
+
+            else{
+                Bundle bundle = new Bundle();
+                bundle.putString("fiatTicker", getIntent().getStringExtra("fiatTicker"));
+                bundle.putString("cryptoTicker", getIntent().getStringExtra("cryptoTicker"));
+                askFragment.setArguments(bundle);
+                return askFragment;
+            }
         }
 
         @Override

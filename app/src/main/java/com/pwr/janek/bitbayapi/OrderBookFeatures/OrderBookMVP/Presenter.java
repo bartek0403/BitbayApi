@@ -1,5 +1,7 @@
 package com.pwr.janek.bitbayapi.OrderBookFeatures.OrderBookMVP;
 
+import android.os.Bundle;
+
 import com.pwr.janek.bitbayapi.ApiInterface.OrderBookApi;
 import com.pwr.janek.bitbayapi.ApplicationDI.BitbayApp;
 import com.pwr.janek.bitbayapi.Model.OrderBook;
@@ -55,5 +57,13 @@ public class Presenter implements MVPOrderBOokContract.Presenter {
     @Override
     public void refreshCompleted(OrderBook orderBook) {
         view.displayOrderBook(orderBook);
+    }
+
+    @Override
+    public void saveTickers(Bundle bundle) {
+        if (bundle != null ){
+            cryptoTicker = bundle.getString("cryptoTicker");
+            fiatTicker = bundle.getString("fiatTicker");
+        }
     }
 }

@@ -34,6 +34,8 @@ public class AskFragment extends Fragment implements MVPOrderBOokContract.View, 
     @BindView(R.id.swipeRefreshLayout_ask)
     SwipeRefreshLayout swipeRefreshLayout;
 
+    Bundle bundle;
+
 
     OrderBookAdapter adapter = new OrderBookAdapter("ask");
 
@@ -70,9 +72,13 @@ public class AskFragment extends Fragment implements MVPOrderBOokContract.View, 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         presenter.setView(this);
+        bundle = this.getArguments();
+        passTickers();
         presenter.refresh();
 
         swipeRefreshLayout.setOnRefreshListener(this);
+
+
 
         return view;
     }
@@ -82,6 +88,11 @@ public class AskFragment extends Fragment implements MVPOrderBOokContract.View, 
         adapter.setItems(orderBook);
         recyclerView.setAdapter(adapter);
         swipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void passTickers() {
+        presenter.saveTickers(bundle);
     }
 
     @Override

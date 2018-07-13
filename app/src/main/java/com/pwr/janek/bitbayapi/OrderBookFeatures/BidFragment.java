@@ -35,6 +35,8 @@ public class BidFragment extends Fragment implements MVPOrderBOokContract.View, 
     SwipeRefreshLayout swipeRefreshLayout;
 
     OrderBookAdapter adapter = new OrderBookAdapter("bid");
+    Bundle bundle;
+
 
 
     public BidFragment() {
@@ -65,9 +67,13 @@ public class BidFragment extends Fragment implements MVPOrderBOokContract.View, 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         presenter.setView(this);
+        bundle = this.getArguments();
+        passTickers();
         presenter.refresh();
 
         swipeRefreshLayout.setOnRefreshListener(this);
+        bundle = this.getArguments();
+
 
         return view;
     }
@@ -82,5 +88,10 @@ public class BidFragment extends Fragment implements MVPOrderBOokContract.View, 
     @Override
     public void onRefresh() {
         presenter.refresh();
+    }
+
+    @Override
+    public void passTickers() {
+        presenter.saveTickers(bundle);
     }
 }
