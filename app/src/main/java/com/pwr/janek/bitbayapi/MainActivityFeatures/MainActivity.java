@@ -34,6 +34,7 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
 //TODO: Poprawić layout
+//TODO: Formatowanie liczb
 
 
 public class MainActivity extends AppCompatActivity implements MVPMainActivityContract.View {

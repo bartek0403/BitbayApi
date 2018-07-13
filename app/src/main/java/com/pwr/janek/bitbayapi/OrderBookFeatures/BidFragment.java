@@ -3,11 +3,13 @@ package com.pwr.janek.bitbayapi.OrderBookFeatures;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.pwr.janek.bitbayapi.Model.OrderBook;
 import com.pwr.janek.bitbayapi.OrderBookFeatures.Adapter.OrderBookAdapter;
@@ -28,11 +30,15 @@ public class BidFragment extends Fragment implements MVPOrderBOokContract.View, 
     @Inject
     Presenter presenter;
 
+    //TODO Dagger?
+    DividerItemDecoration dividerItemDecoration;
+
     @BindView(R.id.recyclerView_bid)
     RecyclerView recyclerView;
 
     @BindView(R.id.swipeRefreshLayout_bid)
     SwipeRefreshLayout swipeRefreshLayout;
+
 
     OrderBookAdapter adapter = new OrderBookAdapter("bid");
     Bundle bundle;
@@ -74,6 +80,8 @@ public class BidFragment extends Fragment implements MVPOrderBOokContract.View, 
         swipeRefreshLayout.setOnRefreshListener(this);
         bundle = this.getArguments();
 
+        dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), LinearLayout.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
         return view;
     }

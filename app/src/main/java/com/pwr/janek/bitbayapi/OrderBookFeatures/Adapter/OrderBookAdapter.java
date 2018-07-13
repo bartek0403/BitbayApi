@@ -47,8 +47,8 @@ public class OrderBookAdapter extends RecyclerView.Adapter<OrderBookViewHolder> 
             orderBookElement = orderBook.getBids().get(position);
         }
 
-        holder.price.setText(String.valueOf(orderBookElement.get(0)));
-        holder.depth.setText(String.valueOf(orderBookElement.get(1)));
+        holder.price.setText(String.format("%.2f",orderBookElement.get(0)) );
+        holder.depth.setText(String.format("%.8f",orderBookElement.get(1)));
     }
 
     @Override
